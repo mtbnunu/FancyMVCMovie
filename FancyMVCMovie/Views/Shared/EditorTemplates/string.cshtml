@@ -1,0 +1,24 @@
+﻿@using System.Net.Mime
+@model string
+@{
+    int maxLength = 0;
+    IEnumerable<ModelValidator> validators = ModelValidatorProviders.Providers.GetValidators(ViewData.ModelMetadata, ViewContext);
+    ModelClientValidationRule rule = validators.SelectMany(v => v.GetClientValidationRules()).FirstOrDefault(m => m.ValidationType == "stringLength");
+    if (rule != null && rule.ValidationParameters.ContainsKey("maximumLength"))
+    {
+        maxLength = (int)rule.ValidationParameters["maximumLength"];
+    }
+}
+<div class="input-field">
+    @if (!string.IsNullOrEmpty(ViewData.ModelMetadata.Description))
+    {
+        <i class="material-icons prefix">@ViewData.ModelMetadata.Description</i>
+    }
+    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="text" class="validate" value="@ViewData.Model" @(maxLength>0?"length='"+maxLength+"'":"")
+        @foreach (var vd in ViewData.Keys)
+        {
+                @vd<text>="@ViewData[vd]"</text>
+        }
+        />
+    <label for="@ViewData.ModelMetadata.PropertyName">@ViewData.ModelMetadata.DisplayName</label>
+</div>
