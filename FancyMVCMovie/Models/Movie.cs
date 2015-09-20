@@ -14,6 +14,7 @@ namespace FancyMVCMovie.Models
 
         [StringLength(60, MinimumLength = 3)]
         [Display(Name = "Title")]
+        [Required]
         public string MovieTitle { get; set; }
 
         [Display(Name = "Release Date")]

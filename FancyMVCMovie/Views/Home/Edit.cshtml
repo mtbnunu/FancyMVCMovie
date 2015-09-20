@@ -5,7 +5,7 @@
 
         @using (Html.BeginForm("Save", "Home", FormMethod.Post))
         {
-            @Html.ValidationSummary()
+            @Html.MyValidationSummary()
             @Html.AntiForgeryToken()
             @Html.HiddenFor(m => m.Id)
             @Html.EditorFor(m => m.MovieTitle)
