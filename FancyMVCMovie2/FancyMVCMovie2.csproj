@@ -289,6 +289,7 @@
     <Content Include="Views\Shared\EditorTemplates\bool.cshtml" />
     <Content Include="Views\Movie\Detail.cshtml" />
     <Content Include="Views\Movie\_UploadImages.cshtml" />
+    <None Include="Properties\PublishProfiles\mvc5example.jaebae.net - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201509210712484_initial.resx">
