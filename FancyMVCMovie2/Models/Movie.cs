@@ -9,6 +9,11 @@ namespace FancyMVCMovie2.Models
 {
     public class Movie
     {
+        public Movie()
+        {
+            this.Pictures = new List<PictureModel>();
+        }
+
         [Key]
         public int? Id { get; set; }
         
@@ -35,5 +40,8 @@ namespace FancyMVCMovie2.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Price")]
         public decimal Price { get; set; }
+
+        [InverseProperty("Movie")]
+        public virtual List<PictureModel> Pictures { get; set; }
     }
 }

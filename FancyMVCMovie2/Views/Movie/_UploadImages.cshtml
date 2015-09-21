@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Guid>
+
+@using (Html.BeginForm("UploadImage", "Movie", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmImageUpload" }))
+{
+
+
+    <h4 class="grey-text">
+        <i class="material-icons prefix black-text left" style="font-size: 1.5em;">pageview</i>
+        Images
+        <span style="font-size: 0.4em;">
+            Please include at least one image
+        </span>
+        <span style="float: right;">
+            <label for="upload" class="btn btn-floating btn-large waves-effect waves-light amber ">
+                <i class="material-icons">add</i>
+            </label>
+        </span>
+    </h4>
+
+    <div class="divider"></div>
+    <div class="progress" hidden="hidden" style="display: none;">
+        <div class="determinate" style="width: 0%"></div>
+    </div>
+
+    <input type="file" onchange="$('#frmImageUpload').submit();" name="files" id="upload" accept="image/*" multiple="multiple"class="customFileInput" hidden="hidden"/>
+
+}
+
+<ul class="imagePrev">
+    @foreach (var guid in Model)
+    {
+        <li>
+            <img src="@Url.Action("GetTempImageThumb", "Movie", new { guid = guid })" />
+            <button class="waves-effect waves-light btn deleteBtn red lighten-2" onclick="deleteImg(this)" data-link="@Url.Action("DeleteTempImage", "Movie", new { guid = guid })">Delete</button>
+        </li>
+    }
+</ul>
+<script>
+    $(document).ready(function () {
+        bindForm("#frmImageUpload");
+    })
+</script>
+

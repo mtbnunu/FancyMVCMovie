@@ -1,4 +1,5 @@
 ﻿@model FancyMVCMovie2.Models.Movie
+<link href="~/Content/css/magnific-popup.css" rel="stylesheet" />
 <h1>
     @Model.MovieTitle
 </h1>
@@ -33,3 +34,35 @@
         </th>
     </tr>
 </table>
+
+<ul class="gallery">
+    @foreach (var img in Model.Pictures)
+    {
+        <li>
+            <a href="@Url.Action("GetImageFull", "Movie", new {id = img.Id}, null)">
+                <img src="@Url.Action("GetImageThumb", "Movie", new {id = img.Id}, null)">
+            </a>
+        </li>
+    }
+</ul>
+
+
+<script src="~/Content/js/magnific-popup.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.gallery a').magnificPopup({
+            type: 'image',
+            mainClass: 'mfp-with-zoom',
+
+            zoom: {
+                enabled: true,
+                duration: 300,
+                easing: 'ease-in-out',
+                opener: function (openerElement) {
+                    return openerElement.is('img') ? openerElement : openerElement.find('img');
+                }
+            }
+
+        });
+    });
+</script>
