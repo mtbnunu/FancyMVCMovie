@@ -51,7 +51,8 @@ namespace FancyMVCMovie2.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                Toast("Your password has been successfully changed.");
+                return RedirectToAction("Index");
             }
             AddErrors(result);
             return View(model);
