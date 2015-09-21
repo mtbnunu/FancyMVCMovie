@@ -79,8 +79,9 @@ namespace FancyMVCMovie2.Controllers
             if (model.Id.HasValue && model.Id > 0)
             {
                 //confirm user has right to update
-                var curModel = unitOfWork.Repository<Movie>().GetByID(model.Id);
-                if (curModel==null || !curModel.UserId.Equals(User.Identity.GetUserId()))
+                var userId = User.Identity.GetUserId();
+                var doesItExist = unitOfWork.Repository<Movie>().Count(a=>a.Id==model.Id && a.UserId.Equals(userId));
+                if (doesItExist == 0)
                 {
                     return new HttpStatusCodeResult(400);
                 }
