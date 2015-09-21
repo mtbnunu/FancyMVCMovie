@@ -38,6 +38,11 @@ namespace FancyMVCMovie2.Controllers
             {
                 return View(model);
             }
+            if (User.Identity.GetUserName().ToLower().Equals("test@test.test"))
+            {
+                ModelState.AddModelError("CustomError", "You cannot change password for test account.");
+                return View(model);
+            }
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
