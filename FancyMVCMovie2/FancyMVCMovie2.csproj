@@ -279,6 +279,7 @@
     <Content Include="Views\Shared\EditorTemplates\decimal.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\string.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\bool.cshtml" />
+    <Content Include="Views\Movie\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201509210712484_initial.resx">

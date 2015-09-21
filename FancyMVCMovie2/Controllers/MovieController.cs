@@ -97,5 +97,15 @@ namespace FancyMVCMovie2.Controllers
 
             return RedirectToAction("Index","Movie");
         }
+
+        public ActionResult Detail(int id)
+        {
+            var model = unitOfWork.Repository<Movie>().GetByID(id);
+            if (!model.UserId.Equals(User.Identity.GetUserId()))
+            {
+                return new HttpStatusCodeResult(400);
+            }
+            return View(model);
+        }
     }
 }

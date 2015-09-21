@@ -1,7 +1,7 @@
 ﻿@using FancyMVCMovie2.Models
 @model LoginViewModel
 <div class="row">
-    <div class="col offset-m2 m8 offset-l3 l6">
+    <div class="col offset-m2 m8 offset-l3 l6 s12">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -19,6 +19,10 @@
                 </div>
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
+                </p>
+                <p>
+                    <b>Demo Account:</b> test@test.test<br/>
+                    <b>Password: </b>Test.123
                 </p>
             }
         </section>

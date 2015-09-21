@@ -1,0 +1,35 @@
+﻿@model FancyMVCMovie2.Models.Movie
+<h1>
+    @Model.MovieTitle
+</h1>
+
+<div style="float:right">
+    @Html.ActionLink("Edit", "Edit", "Movie", new { id = Model.Id }, new { @class = "btn waves-light waves-effect" })
+    @Html.ActionLink("Delete", "Delete", "Movie", new { id = Model.Id }, new { onclick = "return confirm('Are you sure you wish to delete this movie?');", @class = "btn red lighten-2 waves-light waves-effect" })
+</div>
+<table>
+    <tr>
+        <td>
+            Genre
+        </td>
+        <th>
+            @Model.Genre.Name
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Release Date
+        </td>
+        <th>
+            @Html.DisplayFor(m => m.ReleaseDateTime)
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Price
+        </td>
+        <th>
+            @Html.DisplayFor(m => m.Price)
+        </th>
+    </tr>
+</table>
