@@ -1,7 +1,7 @@
 ﻿@model FancyMVCMovie2.Models.Movie
 
 <div class="row">
-    <div class="col offset-m2 m8 offset-l3 l6 s12">
+    <div class="col s12 m6">
 
         @using (Html.BeginForm("Save", "Movie", FormMethod.Post, new { id = "editForm" }))
         {
@@ -19,12 +19,11 @@
             </div>
         }
     </div>
-    <div class="clearfix"></div>
-    <div id="imageUpload">
-        @{ Html.RenderPartial("_UploadImages", (IEnumerable<Guid>)ViewBag.guidList);}
+    <div id="imageUpload" class="col s12 m6">
+        @{ Html.RenderPartial("_UploadImages", (IEnumerable<Guid>) ViewBag.guidList);}
     </div>
-    <div class="center-align">
-
+    <div class="clearfix"></div>
+    <div class="s12 center-align">
         <button class="btn waves-effect waves-light" type="button" name="action" onclick="$('#editForm').submit();">
             Submit
             <i class="material-icons right">send</i>
