@@ -1,0 +1,26 @@
+﻿@using FancyMVCMovie2.Models
+@model LoginViewModel
+<div class="row">
+    <div class="col offset-m2 m8 offset-l3 l6">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Please Log in</h4>
+                @Html.MyValidationSummary()
+                @Html.EditorFor(m => m.Email,null,new {autofocus="autofocus"})
+                @Html.EditorFor(m => m.Password)
+                @Html.EditorFor(m => m.RememberMe)
+                <div style="margin-top: 1em;">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <p>
+                    @Html.ActionLink("Register as a new user", "Register")
+                </p>
+            }
+        </section>
+    </div>
+</div>
