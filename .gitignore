@@ -75,8 +75,8 @@ _[Ss]cripts
 # Include dlls if they're in the CommonReferences directory
 !*CommonReferences/*.dll
 
-/packages/*/[Tt]ools
-/packages/*/[Cc]ontent
+#/packages/*/[Tt]ools
+#/packages/*/[Cc]ontent
 
-/packages/*/lib/*.xml
-/packages/*/lib/*/*.xml
+#/packages/*/lib/*.xml
+#/packages/*/lib/*/*.xml
