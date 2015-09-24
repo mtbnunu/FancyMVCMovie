@@ -4,11 +4,6 @@
     {
         <i class="material-icons prefix">@ViewData.ModelMetadata.Description</i>
     }
-    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="email" class="validate" value="@ViewData.Model"
-                @foreach (var vd in ViewData.Keys)
-                {
-                @vd<text>="@ViewData[vd]"</text>
-                }
-        />
+    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="email" class="validate" value="@ViewData.Model" />
     <label for="@ViewData.ModelMetadata.PropertyName">@ViewData.ModelMetadata.DisplayName</label>
 </div>

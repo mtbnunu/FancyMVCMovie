@@ -4,12 +4,7 @@
     {
         <i class="material-icons prefix">@ViewData.ModelMetadata.Description</i>
     }
-    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="date" value="@ViewData.Model"
-                @foreach (var vd in ViewData.Keys)
-                {
-                @vd<text>="@ViewData[vd]"</text>
-                }
-        />
+    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="date" value="@(Model.HasValue?string.Format(ViewData.ModelMetadata.DisplayFormatString, Model.Value):"")" />
     <label for="@ViewData.ModelMetadata.PropertyName">@ViewData.ModelMetadata.DisplayName</label>
 </div>
 <script>
