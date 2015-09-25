@@ -3,17 +3,18 @@
 @{
     int maxLength = 0;
     IEnumerable<ModelValidator> validators = ModelValidatorProviders.Providers.GetValidators(ViewData.ModelMetadata, ViewContext);
-    ModelClientValidationRule rule = validators.SelectMany(v => v.GetClientValidationRules()).FirstOrDefault(m => m.ValidationType == "stringLength");
-    if (rule != null && rule.ValidationParameters.ContainsKey("maximumLength"))
-    {
-        maxLength = (int)rule.ValidationParameters["maximumLength"];
-    }
+
+    ModelClientValidationRule length = validators.SelectMany(v => v.GetClientValidationRules()).FirstOrDefault(m => m.ValidationType == "length");
 }
 <div class="input-field">
     @if (!string.IsNullOrEmpty(ViewData.ModelMetadata.Description))
     {
         <i class="material-icons prefix">@ViewData.ModelMetadata.Description</i>
     }
-    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="text" class="validate" value="@ViewData.Model" @(maxLength > 0 ? "length='" + maxLength + "'" : "") />
+    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="text" class="validate" value="@ViewData.Model"
+                      @if (length != null) { <text>
+           @*@(length.ValidationParameters.ContainsKey("min") ? string.Format("min={0}", length.ValidationParameters["min"]):"")*@
+           @(length.ValidationParameters.ContainsKey("max") ? string.Format("length={0}", length.ValidationParameters["max"]):"")
+           </text>  } />
     <label for="@ViewData.ModelMetadata.PropertyName">@ViewData.ModelMetadata.DisplayName</label>
 </div>

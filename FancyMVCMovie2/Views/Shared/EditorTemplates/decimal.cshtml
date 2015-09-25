@@ -1,9 +1,17 @@
 ﻿@model decimal?
+@{
+    IEnumerable<ModelValidator> validators = ModelValidatorProviders.Providers.GetValidators(ViewData.ModelMetadata, ViewContext);
+    ModelClientValidationRule range = validators.SelectMany(v => v.GetClientValidationRules()).FirstOrDefault(m => m.ValidationType == "range");
+}
 <div class="input-field">
     @if (!string.IsNullOrEmpty(ViewData.ModelMetadata.Description))
     {
         <i class="material-icons prefix">@ViewData.ModelMetadata.Description</i>
     }
-    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="number" class="" value="@ViewData.Model" />
+    <input id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" type="number" class="validate" value="@ViewData.Model" step="0.01"
+           @if (range != null) { <text>
+           @(range.ValidationParameters.ContainsKey("min") ? string.Format("min={0}", range.ValidationParameters["min"]):"")
+           @(range.ValidationParameters.ContainsKey("max") ? string.Format("max={0}", range.ValidationParameters["max"]):"")
+           </text>  } />
     <label for="@ViewData.ModelMetadata.PropertyName">@ViewData.ModelMetadata.DisplayName</label>
 </div>
