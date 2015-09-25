@@ -281,7 +281,7 @@
     <Content Include="Views\Shared\EditorTemplates\date.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\decimal.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\string.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\bool.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\boolean.cshtml" />
     <Content Include="Views\Movie\Detail.cshtml" />
     <Content Include="Views\Movie\_UploadImages.cshtml" />
     <None Include="Properties\PublishProfiles\mvc5example.jaebae.net - Web Deploy.pubxml" />
